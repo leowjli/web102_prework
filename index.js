@@ -109,7 +109,7 @@ function filterUnfundedOnly() {
     deleteChildElements(gamesContainer);
 
     // use filter() to get a list of games that have not yet met their goal
-    let unfundedGames = GAMES_JSON.filter((game) => {
+    const unfundedGames = GAMES_JSON.filter((game) => {
         return game.pledged < game.goal;
     });
 
@@ -157,13 +157,20 @@ allBtn.addEventListener("click", showAllGames);
 const descriptionContainer = document.getElementById("description-container");
 
 // use filter or reduce to count the number of unfunded games
-
+const sumUnfundedGames = GAMES_JSON.reduce((sum, game) => {
+    if (game.pledged < game.goal) {
+        sum++;
+    }
+    return sum;
+}, 0);
 
 // create a string that explains the number of unfunded games using the ternary operator
-
+const unfundedExplained = `A total of $${totalAmtRaised.toLocaleString('en-US')} has been raised for ${totalGames} games. Currently, ${sumUnfundedGames > 1 ? sumUnfundedGames + " games " : "1 game "} remains unfunded. We need your help to fund these amazing games!`;
 
 // create a new DOM element containing the template string and append it to the description container
-
+const displayStr = document.createElement("p");
+displayStr.innerHTML = unfundedExplained;
+descriptionContainer.appendChild(displayStr);
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
  * Skills used: spread operator, destructuring, template literals, sort 
@@ -177,7 +184,14 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 });
 
 // use destructuring and the spread operator to grab the first and second games
+const [mostFunded, secondMostFunded, ...restOfGames] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+const topGame = document.createElement('h1');
+topGame.innerHTML = mostFunded.name;
+firstGameContainer.appendChild(topGame);
 
 // do the same for the runner up item
+const runnerUp = document.createElement('h1');
+runnerUp.innerHTML = secondMostFunded.name;
+secondGameContainer.appendChild(runnerUp);
