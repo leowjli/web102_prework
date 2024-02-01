@@ -195,3 +195,24 @@ firstGameContainer.appendChild(topGame);
 const runnerUp = document.createElement('h1');
 runnerUp.innerHTML = secondMostFunded.name;
 secondGameContainer.appendChild(runnerUp);
+
+// implement a search bar (search function) for the games
+const searchBar = document.createElement('input');
+searchBar.setAttribute('type', 'text');
+searchBar.setAttribute('id', 'gameSearch');
+searchBar.setAttribute('placeholder', 'Search your game...');
+searchBar.addEventListener('input', Search);
+
+let header = document.querySelector(".header")
+header.appendChild(searchBar);
+
+function Search() {
+    let searchTerm = document.getElementById('gameSearch').value.toLowerCase();
+
+    const filteredSearch = GAMES_JSON.filter((game) => {
+        return game.name.toLowerCase().includes(searchTerm);
+    });
+
+    deleteChildElements(gamesContainer);
+    addGamesToPage(filteredSearch);
+}
