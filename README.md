@@ -17,24 +17,21 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
+* [X] created a search function (search bar at the top) to find the game the user is looking for, also made some CSS changes to the buttons and layout.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='SeaMonsterWalkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+LICEcap
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+A challenge that I faced was working through the teneray operator, it took me a bit to incorporate all the elements to get it displayed properly.
 
 ## License
 
